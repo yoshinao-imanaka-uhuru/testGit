@@ -1,0 +1,16 @@
+name: Manual Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      greeting:
+        description: 'Greeting message'
+        required: true
+        default: 'Hello, world!'
+
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print greeting
+      run: echo "${{ github.event.inputs.greeting }}"

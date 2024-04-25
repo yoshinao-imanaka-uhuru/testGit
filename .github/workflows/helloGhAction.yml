@@ -14,3 +14,10 @@ jobs:
     steps:
     - name: Print greeting
       run: echo "${{ github.event.inputs.greeting }}"
+      
+    - name: Echo Secrets
+      env:
+        SF_USERNAME: ${{ secrets.SF_USERNAME }}
+        SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
+        SF_SECURITY_TOKEN: ${{ secrets.SF_SECURITY_TOKEN }}
+      run: echo "sfdx force:auth:web:login -r https://test.salesforce.com -u ${{ SF_USERNAME }} -p ${{ SF_PASSWORD }}${{ SF_SECURITY_TOKEN }}"
